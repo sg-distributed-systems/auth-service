@@ -12,6 +12,10 @@ def fail_authentication(user_id: str) -> None:
     logger.warning("auth_failure", user_id=user_id, reason="invalid_credentials")
 
 
-if __name__ == "__main__":
+def main() -> None:
     authenticate_user("user-456")
     fail_authentication("user-789")
+
+
+if __name__ == "__main__":
+    main()
