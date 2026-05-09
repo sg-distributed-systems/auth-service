@@ -13,7 +13,7 @@ from core_logger import get_logger
 
 from .errors import AuthenticationError, ValidationError
 
-logger = get_logger("auth-service")
+logger = get_logger("auth-service", tier="compliance")
 
 USERS = {
     "user-001": {"password_hash": "hashed_password_1", "mfa_enabled": False},
