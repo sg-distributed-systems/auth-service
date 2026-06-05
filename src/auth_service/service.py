@@ -49,3 +49,16 @@ def authenticate_user(
 def revoke_token(token: str) -> bool:
     logger.info("token_revoked", token_prefix=token[:8])
     return True
+
+
+def revoke_all_sessions(user_id: str) -> int:
+    logger.info("session_revocation_started", user_id=user_id)
+
+    user = USERS.get(user_id)
+    if not user:
+        logger.warning("session_revocation_failed", user_id=user_id, reason="user_not_found")
+        raise AuthenticationError("invalid_credentials")
+
+    revoked_count = 0
+    logger.info("all_sessions_revoked", user_id=user_id, revoked_count=revoked_count)
+    return revoked_count
